@@ -66,21 +66,22 @@ class PayrollAdmin(admin.ModelAdmin):
     net_salary.short_description = 'Net Salary'
 
     def send_payslips(self, request, queryset):
-        subject = "Payslip for the month of {0}".format(
-            timezone.now().strftime("%B"))
-        message = """
-        Dear {0} {1},
-
-        Please find the payslip for the month of {2} attached to this mail.
-
-        Thank You,
-        Agiliq Team
-        """.format(request.user.first_name, request.user.last_name, timezone.now().strftime("%B"))
         for payroll in queryset:
+            subject = "Payslip for the month of {0}".format(
+                timezone.now().strftime("%B"))
+            message = """
+            Dear {0} {1},
+
+            Please find the payslip for the month of {2} attached to this mail.
+
+            Thank You,
+            FactEye Team
+            """.format(payroll.employee.user_profile.user.first_name,
+            payroll.employee.user_profile.user.last_name, timezone.now().strftime("%B"))
             user_profile = payroll.employee.user_profile
-            payslip = get_payslip(user_profile)
+            # payslip = get_payslip(user_profile)
             send_an_email(subject, message, settings.LEAVE_TRACKER_RECIPIENT, [
-                          request.user.email], payslip)
+                payroll.employee.user_profile.user.email], '123')
         self.message_user(
             request, "Payslips sent to selected employees successfully.")
     send_payslips.short_description = "Send payslip to selected users"

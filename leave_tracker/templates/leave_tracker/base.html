@@ -1,7 +1,7 @@
 <!Doctype html>
 <html>
   <head>
-    <title> Leave tracking app from/for  agiliq</title>
+    <title> FactEye HRM </title>
 
     <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
@@ -22,13 +22,12 @@
         <div class="navbar-inner">
           <div class="container">
             <!-- Be sure to leave the brand out there if you want it shown -->
-            <a class="brand" href="/">Agiliq Leave Tracker</a>
+            <a class="brand" href="/">FactEye HRM</a>
 
             <!-- Everything you want hidden at 940px or less, place within here -->
             <div class="nav-collapse">
               <ul class="nav">
                 <li class="active"><a href="/">Home</a></li>
-                <li><a href="http://agiliq.com">Agiliq.com</a></li>
                 <li class="divider-vertical"></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'apply' %}">Leave Request</a></li>

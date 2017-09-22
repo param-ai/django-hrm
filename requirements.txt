@@ -35,7 +35,6 @@ psycopg2==2.6.2
 ptyprocess==0.5.1
 pyRXP==2.1.1
 python-dateutil==2.5.3
--e git+https://github.com/adieu/python-openid@03773fb96dff352bbda12538726dc5c46fe0316c#egg=python_openid-origin/google
 python-social-auth==0.2.19
 pytz==2013b
 reportlab==3.3.21
