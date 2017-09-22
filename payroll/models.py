@@ -86,6 +86,12 @@ class Employee(models.Model):
     phone = PhoneNumberField(blank=True)
     alternate_phone = PhoneNumberField(blank=True)
 
+    # Payroll Related fields
+    bank_account_number = models.CharField(max_length=50, blank=True)
+    ifsc_code = models.CharField(max_length=50, blank=True)
+    bank_name = models.CharField(max_length=50, blank=True)
+    pan_number = models.CharField(max_length=50, blank=True)
+
     # Job Related fields
     department = models.ForeignKey(Department, blank=True, null=True)
     job_title = models.ForeignKey(Designation, blank=True, null=True)
@@ -95,6 +101,8 @@ class Employee(models.Model):
     personal_url = models.URLField(blank=True)
     identity_proof = models.FileField(
         upload_to=user_directory_path, blank=True)
+    pan_card = models.FileField(
+        upload_to=user_directory_path, blank=True)
     resume = models.FileField(upload_to=user_directory_path, blank=True)
     profile_picture = models.ImageField(
         upload_to=user_directory_path, blank=True)
@@ -103,7 +111,7 @@ class Employee(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
     # Can be used as Employee leaving date
-    to_date = models.DateTimeField(blank=True, null=True)
+    relieving_date = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
         try:

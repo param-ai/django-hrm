@@ -79,7 +79,7 @@ class PayrollAdmin(admin.ModelAdmin):
             """.format(payroll.employee.user_profile.user.first_name,
             payroll.employee.user_profile.user.last_name, timezone.now().strftime("%B"))
             user_profile = payroll.employee.user_profile
-            # payslip = get_payslip(user_profile)
+            payslip = get_payslip(user_profile)
             send_an_email(subject, message, settings.LEAVE_TRACKER_RECIPIENT, [
                 payroll.employee.user_profile.user.email], '123')
         self.message_user(
